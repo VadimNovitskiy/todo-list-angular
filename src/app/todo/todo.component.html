@@ -1,1 +1,22 @@
-<p>todo works!</p>
+<div class="item" *ngIf="!editable">
+
+    <div class="text">
+        <mat-checkbox [id]="item.text" class="checkbox" (change)="item.done = !item.done" [checked]="item.done"></mat-checkbox>
+        <label [for]="item.text">{{item.text}}</label>
+    </div>
+
+    <div class="icons">
+        <mat-icon class="edit" (click)="editable = !editable">edit</mat-icon>
+        <mat-icon class="delete" (click)="remove.emit()">delete</mat-icon>
+    </div>
+</div>
+
+<div class="editable" *ngIf="editable">
+    <input class="input-edit" appAutoFocusDirective placeholder="edit item" [value]="item.text" #editedItem (keyup.enter)="saveItem(editedItem.value)">
+
+
+    <div class="icons">
+        <mat-icon class="cancel" (click)="editable = !editable">cancel</mat-icon>
+        <mat-icon class="add-circle" (click)="saveItem(editedItem.value)">add_circle</mat-icon>
+    </div>
+</div>

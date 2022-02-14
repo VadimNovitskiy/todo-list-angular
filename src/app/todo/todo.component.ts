@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component, Input, Output, EventEmitter,
+} from '@angular/core';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss']
+  styleUrls: ['./todo.component.scss'],
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent {
+  editable = false;
 
-  constructor() { }
+  @Input() item!: Item;
 
-  ngOnInit(): void {
+  @Input() newItem!: string;
+
+  @Output() remove = new EventEmitter<Item>();
+
+  saveItem(text: any) {
+    if (!text) return;
+    this.editable = false;
+    this.item.text = text;
   }
-
 }
