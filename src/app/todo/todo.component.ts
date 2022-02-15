@@ -1,7 +1,5 @@
-import {
-  Component, Input, Output, EventEmitter,
-} from '@angular/core';
-import { Item } from '../item';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Item } from '../auxiliary_components/item';
 
 @Component({
   selector: 'app-todo',
@@ -17,7 +15,7 @@ export class TodoComponent {
 
   @Output() remove = new EventEmitter<Item>();
 
-  saveItem(text: any) {
+  saveItem(text: string) {
     if (!text) return;
     this.editable = false;
     this.item.text = text;

@@ -9,13 +9,15 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
-import { AutoFocusDirectiveDirective } from './auto-focus-directive.directive';
+import { AutoFocusDirectiveDirective } from './auxiliary_components/auto-focus-directive.directive';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
     AutoFocusDirectiveDirective,
+    TodoListComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,4 +31,4 @@ import { AutoFocusDirectiveDirective } from './auto-focus-directive.directive';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
