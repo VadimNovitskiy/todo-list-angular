@@ -10,9 +10,11 @@
     
     <ul class="list">
         <li class="todo" *ngFor="let item of items">
-            <app-todo [item]="item"></app-todo>
+            <app-todo [item]="item" (remove)="removeItem(item)">
+            </app-todo>
         </li>
     </ul>
 
-    <app-todo-input></app-todo-input>
+    <app-todo-input (add)="addItem($event)">
+    </app-todo-input>
 </div>

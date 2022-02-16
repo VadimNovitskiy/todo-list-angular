@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from '../auxiliary_components/item';
 import { DataService } from '../data.service';
 
@@ -8,6 +8,8 @@ import { DataService } from '../data.service';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
+  @Input() text!: string;
+
   items: Item[] = [];
 
   constructor(private dataService: DataService) {}
@@ -16,7 +18,11 @@ export class TodoListComponent implements OnInit {
     this.items = this.dataService.getData();
   }
 
-  // remove(item: Item) {
-  //   this.allItems.splice(this.allItems.indexOf(item), 1);
-  // }
+  addItem(text: string) {
+    this.dataService.addData(text);
+  }
+
+  removeItem(item: Item) {
+    this.dataService.removeData(item);
+  }
 }

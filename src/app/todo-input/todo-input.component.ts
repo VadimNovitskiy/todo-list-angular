@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Item } from '../auxiliary_components/item';
+import { Component, Output, EventEmitter } from '@angular/core';
+// import { Item } from '../auxiliary_components/item';
 import { DataService } from '../data.service';
 
 @Component({
@@ -8,11 +8,14 @@ import { DataService } from '../data.service';
   styleUrls: ['./todo-input.component.scss'],
 })
 export class TodoInputComponent {
-  @Input() item!: Item;
+  @Output() add = new EventEmitter();
 
   constructor(private dataService: DataService) {}
 
   addItem(text: string) {
-    this.dataService.addData(text);
+    // if (!text) {
+    //   return;
+    // }
+    this.add.emit(text);
   }
 }

@@ -11,7 +11,7 @@ export class DataService {
     this.data.push(new Item(text));
   }
 
-  remove(item: Item) {
+  removeData(item: Item) {
     this.data.splice(this.data.indexOf(item), 1);
   }
 }

@@ -1,13 +1,13 @@
-<div class="item" *ngIf="!editable">
+<div class="item">
 
     <mat-checkbox [id]="item.text" class="item__checkbox" (change)="item.done = !item.done" [checked]="item.done"></mat-checkbox>
     <div class="item__text">{{item.text}}</div>
-    <mat-icon class="item__edit" (click)="editable = !editable">edit</mat-icon>
-    <mat-icon class="item__delete" (click)="remove.emit()">delete</mat-icon>
+    <mat-icon class="item__edit" (click)="onEdit(item.text)">edit</mat-icon>
+    <mat-icon class="item__delete" (click)="onRemove()">delete</mat-icon>
 
 </div>
 
-<div class="editable" *ngIf="editable">
+<!-- <div class="editable" *ngIf="editable">
     <input class="editable__input" appAutoFocusDirective placeholder="edit item" [value]="item.text" #editedItem (keyup.enter)="saveItem(editedItem.value)">
 
 
@@ -15,4 +15,4 @@
         <mat-icon class="icons__cancel" (click)="editable = !editable">cancel</mat-icon>
         <mat-icon class="icons__add" (click)="saveItem(editedItem.value)">add_circle</mat-icon>
     </div>
-</div>
+</div> -->

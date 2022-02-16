@@ -7,23 +7,17 @@ import { Item } from '../auxiliary_components/item';
   styleUrls: ['./todo.component.scss'],
 })
 export class TodoComponent {
-  editable = false;
-
   @Input() item!: Item;
-
-  @Input() newItem!: string;
 
   @Output() remove = new EventEmitter();
 
-  @Output() selected = new EventEmitter();
+  @Output() editable = new EventEmitter();
 
-  saveItem(text: string) {
-    if (!text) return;
-    this.editable = false;
-    this.item.text = text;
+  onEdit(text: string) {
+    this.editable.emit(text);
   }
 
-  select() {
-    this.selected.emit();
+  onRemove() {
+    this.remove.emit(this.item);
   }
 }
