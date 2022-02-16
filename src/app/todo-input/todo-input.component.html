@@ -1,0 +1,4 @@
+<div class="wrapper">
+    <textarea class="textarea" matInput placeholder="Write something" #newItem (keyup.enter)="addItem(newItem.value); newItem.value=''"></textarea>
+    <button mat-raised-button color="accent" (click)="addItem(newItem.value); newItem.value=''">Add</button>
+</div>

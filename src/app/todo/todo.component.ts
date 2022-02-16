@@ -13,11 +13,17 @@ export class TodoComponent {
 
   @Input() newItem!: string;
 
-  @Output() remove = new EventEmitter<Item>();
+  @Output() remove = new EventEmitter();
+
+  @Output() selected = new EventEmitter();
 
   saveItem(text: string) {
     if (!text) return;
     this.editable = false;
     this.item.text = text;
+  }
+
+  select() {
+    this.selected.emit();
   }
 }

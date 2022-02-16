@@ -1,4 +1,3 @@
-export interface Item {
-  text: string;
-  done: boolean;
+export class Item {
+  constructor(public text: string, public done: boolean = false) {}
 }

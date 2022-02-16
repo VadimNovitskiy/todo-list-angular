@@ -1,22 +1,18 @@
 <div class="item" *ngIf="!editable">
 
-    <div class="text">
-        <mat-checkbox [id]="item.text" class="checkbox" (change)="item.done = !item.done" [checked]="item.done"></mat-checkbox>
-        <label [for]="item.text">{{item.text}}</label>
-    </div>
+    <mat-checkbox [id]="item.text" class="item__checkbox" (change)="item.done = !item.done" [checked]="item.done"></mat-checkbox>
+    <div class="item__text">{{item.text}}</div>
+    <mat-icon class="item__edit" (click)="editable = !editable">edit</mat-icon>
+    <mat-icon class="item__delete" (click)="remove.emit()">delete</mat-icon>
 
-    <div class="icons">
-        <mat-icon class="edit" (click)="editable = !editable">edit</mat-icon>
-        <mat-icon class="delete" (click)="remove.emit()">delete</mat-icon>
-    </div>
 </div>
 
 <div class="editable" *ngIf="editable">
-    <input class="input-edit" appAutoFocusDirective placeholder="edit item" [value]="item.text" #editedItem (keyup.enter)="saveItem(editedItem.value)">
+    <input class="editable__input" appAutoFocusDirective placeholder="edit item" [value]="item.text" #editedItem (keyup.enter)="saveItem(editedItem.value)">
 
 
     <div class="icons">
-        <mat-icon class="cancel" (click)="editable = !editable">cancel</mat-icon>
-        <mat-icon class="add-circle" (click)="saveItem(editedItem.value)">add_circle</mat-icon>
+        <mat-icon class="icons__cancel" (click)="editable = !editable">cancel</mat-icon>
+        <mat-icon class="icons__add" (click)="saveItem(editedItem.value)">add_circle</mat-icon>
     </div>
 </div>

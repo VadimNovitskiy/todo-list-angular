@@ -1,14 +1,19 @@
 .item {
     display: flex;
-    align-items: center;
-}
 
-.checkbox {
-    margin: 0 10px 0 0;
-}
+    &__text {
+        flex-basis: 100%;
+        margin-left: 10px;
+        max-width: fill-available;;
+    }
 
-.text {
-    flex: 1 0 auto;
+    &__edit {
+        margin: 0 5px 0 10px;
+    }
+
+    &__delete {
+        margin: 0 5px 0 5px;
+    }
 }
 
 ::ng-deep .mat-checkbox-frame {
@@ -23,31 +28,26 @@
     }
 }
 
-.edit {
-    margin: 0 5px 0 10px;
-}
-.delete {
-    margin: 0 5px 0 5px;
-}
-
 .editable {
     display: flex;
     flex-direction: row;
     align-items: center;
-}
 
-.input-edit {
-    background-color: #1f1f1f;
-    color: white;
-    flex: 1 0 auto;
-    font-size: 14px;
-    font-weight: 500;
+    &__input {
+        background-color: #1f1f1f;
+        color: white;
+        flex: 1 0 auto;
+        font-size: 14px;
+        font-weight: 500;
+    }
 }
+.icons {
 
-.cancel {
-    margin: 0 5px 0 10px;
-}
+    &__cancel {
+        margin: 0 5px 0 10px;
+    }
 
-.add-circle {
-    margin: 0 5px 0 5px;
+    &__add {
+        margin: 0 5px 0 5px;
+    }
 }

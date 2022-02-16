@@ -2,19 +2,23 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
-.checkbox {
-  margin: 0 10px 0 0;
+.item__text {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  margin-left: 10px;
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
+  max-width: fill-available;
 }
 
-.text {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+.item__edit {
+  margin: 0 5px 0 10px;
+}
+
+.item__delete {
+  margin: 0 5px 0 5px;
 }
 
 ::ng-deep .mat-checkbox-frame {
@@ -31,14 +35,6 @@
   color: #ff4081;
 }
 
-.edit {
-  margin: 0 5px 0 10px;
-}
-
-.delete {
-  margin: 0 5px 0 5px;
-}
-
 .editable {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,7 +48,7 @@
           align-items: center;
 }
 
-.input-edit {
+.editable__input {
   background-color: #1f1f1f;
   color: white;
   -webkit-box-flex: 1;
@@ -62,10 +58,10 @@
   font-weight: 500;
 }
 
-.cancel {
+.icons__cancel {
   margin: 0 5px 0 10px;
 }
 
-.add-circle {
+.icons__add {
   margin: 0 5px 0 5px;
 }

@@ -1,37 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Item } from '../auxiliary_components/item';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
 })
-export class TodoListComponent {
-  filter: 'all' | 'active' | 'done' = 'all';
+export class TodoListComponent implements OnInit {
+  items: Item[] = [];
 
-  allItems: Item[] = [];
+  constructor(private dataService: DataService) {}
 
-  get items() {
-    if (this.filter === 'all') {
-      return this.allItems;
-    }
-
-    return this.allItems.filter((item) => {
-      this.filter === 'done' ? item.done : !item.done;
-    });
+  ngOnInit(): void {
+    this.items = this.dataService.getData();
   }
 
-  addTodo(text: string) {
-    const item: Item = {
-      text,
-      done: false,
-    };
-    if (text) {
-      this.allItems.push(item);
-    }
-  }
-
-  remove(item: Item) {
-    this.allItems.splice(this.allItems.indexOf(item), 1);
-  }
+  // remove(item: Item) {
+  //   this.allItems.splice(this.allItems.indexOf(item), 1);
+  // }
 }

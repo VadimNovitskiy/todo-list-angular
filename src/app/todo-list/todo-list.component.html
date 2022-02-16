@@ -1,22 +1,18 @@
 <div class="container">
     <div class="heder">
         <div class="title">Your Todo</div>
-        <div class="filter">
+        <!-- <div class="filter">
             <button mat-button (click)="filter = 'all'">All</button>
             <button mat-button (click)="filter = 'active'">Active</button>
             <button mat-button (click)="filter = 'done'">Done</button>
-        </div>
+        </div> -->
     </div>
     
-    <!-- <h2>{{items.length}} <span *ngIf="items.length === 1; else elseBlock">item</span>
-    <ng-template #elseBlock>items</ng-template></h2> -->
-
     <ul class="list">
         <li class="todo" *ngFor="let item of items">
-            <app-todo (remove)="remove(item)" [item]="item"></app-todo>
+            <app-todo [item]="item"></app-todo>
         </li>
     </ul>
 
-    <textarea class="textarea" matInput placeholder="Write something" #newItem (keyup.enter)="addTodo(newItem.value); newItem.value=''"></textarea>
-    <button mat-raised-button color="accent" (click)="addTodo(newItem.value); newItem.value=''">Add</button>
+    <app-todo-input></app-todo-input>
 </div>
