@@ -1,20 +1,22 @@
-<div class="container">
-    <div class="heder">
-        <div class="title">Your Todo</div>
-        <!-- <div class="filter">
-            <button mat-button (click)="filter = 'all'">All</button>
-            <button mat-button (click)="filter = 'active'">Active</button>
-            <button mat-button (click)="filter = 'done'">Done</button>
-        </div> -->
-    </div>
+<div class="wrapper">
+    <div class="container">
+        <div class="heder">
+            <div class="title">Your Todo</div>
+            <!-- <div class="filter">
+                <button mat-button (click)="filter = 'all'">All</button>
+                <button mat-button (click)="filter = 'active'">Active</button>
+                <button mat-button (click)="filter = 'done'">Done</button>
+            </div> -->
+        </div>
+        
+        <ul class="list">
+            <li class="todo" *ngFor="let item of items">
+                <app-todo [item]="item" (remove)="removeItem(item)">
+                </app-todo>
+            </li>
+        </ul>
     
-    <ul class="list">
-        <li class="todo" *ngFor="let item of items">
-            <app-todo [item]="item" (remove)="removeItem(item)">
-            </app-todo>
-        </li>
-    </ul>
-
-    <app-todo-input (add)="addItem($event)">
-    </app-todo-input>
+        <app-todo-input (add)="addItem($event)">
+        </app-todo-input>
+    </div>
 </div>

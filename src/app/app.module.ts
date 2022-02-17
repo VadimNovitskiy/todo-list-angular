@@ -6,10 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
-import { AutoFocusDirectiveDirective } from './auxiliary_components/auto-focus-directive.directive';
+import { AutoFocusDirectiveDirective } from './auxiliary_components/auto-focus.directive.directive';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { DataService } from './data.service';
 import { TodoInputComponent } from './todo-input/todo-input.component';
@@ -30,6 +31,7 @@ import { TodoInputComponent } from './todo-input/todo-input.component';
     MatCheckboxModule,
     MatInputModule,
     MatIconModule,
+    RouterModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent],

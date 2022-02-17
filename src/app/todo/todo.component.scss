@@ -5,6 +5,8 @@
         flex-basis: 100%;
         margin-left: 10px;
         max-width: stretch;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     &__edit {
@@ -31,14 +33,13 @@
 .editable {
     display: flex;
     flex-direction: row;
-    align-items: center;
 
     &__input {
         background-color: #1f1f1f;
         color: white;
-        flex: 1 0 auto;
         font-size: 14px;
         font-weight: 500;
+        resize: none;
     }
 }
 .icons {
@@ -50,4 +51,12 @@
     &__add {
         margin: 0 5px 0 5px;
     }
+}
+
+mat-form-field {
+    flex: 1 0 auto;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
 }

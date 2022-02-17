@@ -7,14 +7,19 @@ import { Item } from '../auxiliary_components/item';
   styleUrls: ['./todo.component.scss'],
 })
 export class TodoComponent {
+  editable = false;
+
   @Input() item!: Item;
 
   @Output() remove = new EventEmitter();
 
-  @Output() editable = new EventEmitter();
+  onEdit() {
+    this.editable = !this.editable;
+  }
 
-  onEdit(text: string) {
-    this.editable.emit(text);
+  onSave(text: string) {
+    this.item.text = text;
+    this.editable = !this.editable;
   }
 
   onRemove() {

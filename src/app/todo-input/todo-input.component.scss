@@ -4,17 +4,31 @@
 }
 
 .textarea {
+    box-sizing: border-box;
     background: #171717;
     min-width: 20rem;
-    max-width: 100%;
+    max-width: 56rem;
     min-height: 8rem;
-    padding: 10px 10px 0;
+    padding: 1rem 1rem 0;
     color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin: 0 0 10px 0;
+    resize: none;
 }
 
 ::placeholder {
     color: #736b5e;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #171717;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff4081;
 }
