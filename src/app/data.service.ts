@@ -3,8 +3,13 @@ import { Item } from './auxiliary_components/item';
 export class DataService {
   private data: Item[] = [];
 
-  getData(): Item[] {
-    return this.data;
+  getData(filter: string): Item[] {
+    if (filter === 'all') {
+      return this.data;
+    }
+    return this.data.filter((item) =>
+      filter === 'done' ? item.done : !item.done
+    );
   }
 
   addData(text: string) {

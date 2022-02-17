@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, DoCheck } from '@angular/core';
 import { Item } from '../auxiliary_components/item';
 import { DataService } from '../data.service';
 
@@ -7,15 +7,17 @@ import { DataService } from '../data.service';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent implements DoCheck {
+  filter: 'all' | 'active' | 'done' = 'all';
+
   @Input() text!: string;
 
   items: Item[] = [];
 
   constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
-    this.items = this.dataService.getData();
+  ngDoCheck(): void {
+    this.items = this.dataService.getData(this.filter);
   }
 
   addItem(text: string) {

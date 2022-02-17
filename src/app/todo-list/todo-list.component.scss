@@ -1,15 +1,12 @@
-.wrapper {
-    margin: 0 auto;
-    max-width: 60rem;
-}
-
 .container {
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    max-width: 60rem;
     font-size: 14px;
     font-weight: 500;
     color: white;
-    margin: 0 2rem;
+    padding: 0 2rem;
 }
 
 .list {
@@ -23,6 +20,27 @@
     cursor: default;
 }
 
+.mat-button-toggle-group {
+    border-radius: 5px;
+}
+
+.mat-button-toggle {
+    background: none;
+    color: #f0f0f0;
+    margin-right: 5px;
+}
+
+.mat-button-toggle:hover {
+    color: #ff4081;
+}
+
+.mat-button-toggle-checked {
+    color: #ff4081;
+}
+
+.mat-button-toggle-group-appearance-standard {
+    border: none;
+}
 
 .todo {
     width: 100%;

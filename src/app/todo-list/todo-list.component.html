@@ -1,22 +1,22 @@
-<div class="wrapper">
-    <div class="container">
-        <div class="heder">
-            <div class="title">Your Todo</div>
-            <!-- <div class="filter">
-                <button mat-button (click)="filter = 'all'">All</button>
-                <button mat-button (click)="filter = 'active'">Active</button>
-                <button mat-button (click)="filter = 'done'">Done</button>
-            </div> -->
-        </div>
-        
-        <ul class="list">
-            <li class="todo" *ngFor="let item of items">
-                <app-todo [item]="item" (remove)="removeItem(item)">
-                </app-todo>
-            </li>
-        </ul>
+<div class="container">
     
-        <app-todo-input (add)="addItem($event)">
-        </app-todo-input>
+    <div class="heder">
+        <div class="title">Your Todo</div>
+        <mat-button-toggle-group aria-label=none>
+            <mat-button-toggle (click)="filter = 'all'">All</mat-button-toggle>
+            <mat-button-toggle (click)="filter = 'active'">Active</mat-button-toggle>
+            <mat-button-toggle (click)="filter = 'done'">Done</mat-button-toggle>
+          </mat-button-toggle-group>
     </div>
+    
+    <ul class="list">
+        <li class="todo" *ngFor="let item of items">
+            <app-todo [item]="item" (remove)="removeItem(item)">
+            </app-todo>
+        </li>
+    </ul>
+
+    <app-todo-input (add)="addItem($event)">
+    </app-todo-input>
 </div>
+
