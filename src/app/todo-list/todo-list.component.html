@@ -2,16 +2,16 @@
     
     <div class="heder">
         <div class="title">Your Todo</div>
-        <mat-button-toggle-group aria-label=none>
-            <mat-button-toggle (click)="filter = 'all'">All</mat-button-toggle>
-            <mat-button-toggle (click)="filter = 'active'">Active</mat-button-toggle>
-            <mat-button-toggle (click)="filter = 'done'">Done</mat-button-toggle>
-          </mat-button-toggle-group>
+        <mat-button-toggle-group #group="matButtonToggleGroup" aria-label='none' [value]=filter>
+            <mat-button-toggle value="all" (click)="renderItem(group.value)">All</mat-button-toggle>
+            <mat-button-toggle value="active" (click)="renderItem(group.value)">Active</mat-button-toggle>
+            <mat-button-toggle value="done" (click)="renderItem(group.value)">Done</mat-button-toggle>
+        </mat-button-toggle-group>
     </div>
     
     <ul class="list">
         <li class="todo" *ngFor="let item of items">
-            <app-todo [item]="item" (remove)="removeItem(item)">
+            <app-todo [item]="item" (remove)="removeItem(item)" (change)="checkItem()">
             </app-todo>
         </li>
     </ul>

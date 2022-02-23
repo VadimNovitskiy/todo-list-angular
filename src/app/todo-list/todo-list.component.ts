@@ -1,30 +1,37 @@
-import { Component, Input, DoCheck } from '@angular/core';
-import { Item } from '../auxiliary_components/item';
+import { Component } from '@angular/core';
+import { Item } from '../shared/item';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
 })
-export class TodoListComponent implements DoCheck {
-  filter: 'all' | 'active' | 'done' = 'all';
+export class TodoListComponent {
+  filter = 'all';
+  items = this.dataService.stream$.value;
 
-  @Input() text!: string;
+  constructor(public dataService: DataService, private router: Router) {}
 
-  items: Item[] = [];
-
-  constructor(private dataService: DataService) {}
-
-  ngDoCheck(): void {
+  renderItem(typeOfFilter: string): void {
+    this.filter = typeOfFilter;
     this.items = this.dataService.getData(this.filter);
+    this.router.navigateByUrl(`/${this.filter}`);
+  }
+
+  checkItem() {
+    console.log('check');
+    // this.items = this.dataService.getData(this.filter);
   }
 
   addItem(text: string) {
     this.dataService.addData(text);
+    this.items = this.dataService.getData(this.filter);
   }
 
   removeItem(item: Item) {
     this.dataService.removeData(item);
+    this.items = this.dataService.getData(this.filter);
   }
 }

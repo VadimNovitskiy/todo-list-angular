@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-todo-input',
@@ -8,8 +7,6 @@ import { DataService } from '../data.service';
 })
 export class TodoInputComponent {
   @Output() add = new EventEmitter();
-
-  constructor(private dataService: DataService) {}
 
   addItem(text: string) {
     if (!text) {

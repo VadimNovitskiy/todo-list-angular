@@ -11,15 +11,16 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
-import { AutoFocusDirectiveDirective } from './auxiliary_components/auto-focus.directive.directive';
+import { AutoFocusDirectiveDirective } from './shared/auto-focus.directive.directive';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { DataService } from './data.service';
 import { TodoInputComponent } from './todo-input/todo-input.component';
+import { MenuComponent } from './menu/menu.component';
 
 const appRoutes: Routes = [
   { path: '', component: TodoListComponent },
-  { path: 'new', component: TodoInputComponent },
-  { path: '**', component: TodoComponent },
+  { path: ':{filterType}', component: TodoListComponent },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
     AutoFocusDirectiveDirective,
     TodoListComponent,
     TodoInputComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

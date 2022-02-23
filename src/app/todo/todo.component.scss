@@ -16,6 +16,14 @@
     &__delete {
         margin: 0 5px 0 5px;
     }
+
+    &.checked {
+        opacity: .5;
+    }
+
+    &:hover:not(.checked) {
+        cursor: pointer;
+    }
 }
 
 ::ng-deep .mat-checkbox-frame {

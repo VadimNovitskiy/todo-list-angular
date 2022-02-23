@@ -1,13 +1,19 @@
-import { Item } from './auxiliary_components/item';
+import { Item } from './shared/item';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class DataService {
   private data: Item[] = [];
+  public stream$: BehaviorSubject<Item[]> = new BehaviorSubject(this.data);
 
   getData(filter: string): Item[] {
     if (filter === 'all') {
-      return this.data;
+      return this.stream$.value;
     }
-    return this.data.filter((item) =>
+    return this.stream$.value.filter((item) =>
       filter === 'done' ? item.done : !item.done
     );
   }

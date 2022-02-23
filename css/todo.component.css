@@ -23,6 +23,14 @@
   margin: 0 5px 0 5px;
 }
 
+.item.checked {
+  opacity: .5;
+}
+
+.item:hover:not(.checked) {
+  cursor: pointer;
+}
+
 ::ng-deep .mat-checkbox-frame {
   border-color: #736b5e;
 }
