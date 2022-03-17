@@ -11,7 +11,7 @@
     
     <ul class="list">
         <li class="todo" *ngFor="let item of items">
-            <app-todo [item]="item" (remove)="removeItem(item)" (change)="checkItem()">
+            <app-todo [item]="item" (remove)="removeItem(item)">
             </app-todo>
         </li>
     </ul>

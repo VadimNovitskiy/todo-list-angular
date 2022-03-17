@@ -38,8 +38,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -111,6 +111,7 @@
   },
   "defaultProject": "todo_list",
   "cli": {
+    "analytics": "e6680a2c-846b-41b6-8302-0d7f8a0c5583",
     "defaultCollection": "@angular-eslint/schematics"
   }
 }

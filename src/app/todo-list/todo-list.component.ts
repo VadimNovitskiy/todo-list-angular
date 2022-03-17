@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Item } from '../shared/item';
-import { DataService } from '../data.service';
+import { Item } from '../shared/data.service';
+import { DataService } from '../shared/data.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -10,9 +9,19 @@ import { Router } from '@angular/router';
 })
 export class TodoListComponent {
   filter = 'all';
-  items = this.dataService.stream$.value;
+  items: Item[] = [];
 
   constructor(public dataService: DataService, private router: Router) {}
+
+  ngOnInit() {
+    this.getItems();
+  }
+
+  getItems(): void {
+    this.dataService.getItems().subscribe((items) => {
+      this.items = items;
+    });
+  }
 
   renderItem(typeOfFilter: string): void {
     this.filter = typeOfFilter;
@@ -20,18 +29,11 @@ export class TodoListComponent {
     this.router.navigateByUrl(`/${this.filter}`);
   }
 
-  checkItem() {
-    console.log('check');
-    // this.items = this.dataService.getData(this.filter);
-  }
-
   addItem(text: string) {
-    this.dataService.addData(text);
-    this.items = this.dataService.getData(this.filter);
+    this.dataService.addData(text).subscribe();
   }
 
   removeItem(item: Item) {
-    this.dataService.removeData(item);
-    this.items = this.dataService.getData(this.filter);
+    this.dataService.removeData(item).subscribe();
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Item } from '../shared/item';
+import { Item } from '../shared/data.service';
 
 @Component({
   selector: 'app-todo',
@@ -13,12 +13,6 @@ export class TodoComponent {
   @Input() item!: Item;
 
   @Output() remove = new EventEmitter();
-  @Output() check = new EventEmitter();
-
-  onCheck() {
-    console.log(this.item);
-    this.check.emit();
-  }
 
   onEdit() {
     this.editable = !this.editable;
