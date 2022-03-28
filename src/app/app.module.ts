@@ -8,18 +8,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-// import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-// import { environment } from '../environments/environment';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
 import { AutoFocusDirectiveDirective } from './shared/auto-focus.directive.directive';
 import { TodoListComponent } from './todo-list/todo-list.component';
-import { DataService } from './shared/data.service';
+import { DataService } from './servises/data.service';
 import { TodoInputComponent } from './todo-input/todo-input.component';
 import { MenuComponent } from './menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -51,10 +49,7 @@ const appRoutes: Routes = [
     RouterModule,
     MatButtonToggleModule,
     HttpClientModule,
-    // AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
   ],
   providers: [DataService],

@@ -1,6 +1,6 @@
-<div class="item" [class.checked]="item.done" *ngIf="!editable">
+<div class="item" [class.checked]="item.done!" *ngIf="!editable">
 
-    <mat-checkbox class="item__checkbox" (click)="item.done" (change)="item.done = !item.done" [checked]="item.done"></mat-checkbox>
+    <mat-checkbox class="item__checkbox" [checked]="item.done!" (change)="onClick($event)"></mat-checkbox>
     <div class="item__text" (click)="onEdit()">{{item.text}}</div>
     <mat-icon class="item__edit" (click)="onEdit()">edit</mat-icon>
     <mat-icon class="item__delete" (click)="onRemove()">delete</mat-icon>
