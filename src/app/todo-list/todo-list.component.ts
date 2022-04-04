@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../models/item.model';
-import { DataService } from '../servises/data.service';
+import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-todo-list',

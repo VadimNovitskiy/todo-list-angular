@@ -1,0 +1,67 @@
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100%;
+}
+
+.auth-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  height: 30rem;
+  color: white;
+  width: 20rem;
+  background: rgb(0, 0, 0, 30%);
+}
+
+mat-label {
+  color: white;
+}
+
+.user-email {
+  width: 15rem;
+
+  &__label {
+  }
+
+  &__input {
+  }
+}
+.user-password {
+  width: 15rem;
+  &__input {
+  }
+}
+
+mat-form-field {
+  margin-left: 8px;
+}
+
+.or {
+  margin: .5rem 0;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.google-btn {
+  margin-bottom: 1rem;
+}
+
+a {
+  margin-top: 0.5rem;
+  color: #ff4081;
+}
+
+::placeholder {
+  color: white;
+  font-weight: 400;
+  opacity: 50%;
+}
+

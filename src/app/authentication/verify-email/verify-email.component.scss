@@ -1,0 +1,37 @@
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100%;
+}
+.verify-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  height: 30rem;
+  color: white;
+  width: 20rem;
+  background: rgb(0, 0, 0, 30%);
+  padding: 22px;
+
+		&__text {
+      margin: 2rem 0;
+      font-size: 12px;
+      font-weight: 200;
+		}
+}
+
+.verify-btn {
+  margin-bottom: 1.5rem;
+}
+
+a {
+  margin-top: 0.5rem;
+  color: #ff4081;
+}

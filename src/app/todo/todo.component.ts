@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Item } from '../models/item.model';
-import { DataService } from '../servises/data.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-todo',

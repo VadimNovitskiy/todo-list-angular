@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="auth-block">
+    <h3>Sing Up</h3>
+
+    <mat-form-field class="user-email"  appearance="fill">
+      <mat-label class="user-email__label">Enter your email</mat-label>
+      <input matInput class="user-email__input" placeholder="pat@example.com" [formControl]="email" #userEmail required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="user-password" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput class="user-password__input" [type]="hide ? 'password' : 'text'"  #userPassword required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" (click)="authService.SingUp(userEmail.value, userPassword.value)">Sing Up</button>
+
+    <span class="or"><span class="or-inner">Or</span></span>
+
+    <cool-google-button class="google-btn" color="light" (click)="authService.GoogleAuth()">
+      Continue with Google
+    </cool-google-button>
+
+    <span>Already have an account?</span><a  class="redirect" routerLink="/">Log In</a>
+  </div>
+</div>

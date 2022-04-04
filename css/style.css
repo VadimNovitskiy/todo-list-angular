@@ -38,11 +38,11 @@ input, button, textarea {
 }
 
 input::-ms-clear {
-  isplay: none;
+  display: none;
 }
 
 button {
-  ursor: pointer;
+  cursor: pointer;
 }
 
 button::-moz-focus-inner {

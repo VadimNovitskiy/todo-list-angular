@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="verify-block">
+    <h3>Thank You for Registering</h3>
+
+    <div class="verify-block__text" *ngIf="authService.userData as user">
+      <p>We have sent a confirmation email to <strong>{{user.email}}</strong>.</p>
+      <p>Please check your email and click on the link to verfiy your email address.</p>
+    </div>
+
+    <button mat-raised-button class="verify-btn" color="accent" (click)="authService.SendVerificationMail()">Resend Verification Email</button>
+
+    <span>Go back to?</span><a routerLink="/">Sing in</a>
+  </div>
+</div>
