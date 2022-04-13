@@ -5,18 +5,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons';
-
 import { environment } from '../environments/environment';
 import { AutoFocusDirectiveDirective } from './shared/auto-focus.directive.directive';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
@@ -31,6 +32,7 @@ import { VerifyEmailComponent } from './authentication/verify-email/verify-email
 
 import { DataService } from './services/data.service';
 import { AuthService } from './services/auth.service';
+import { MomentPipe } from './shared/moment.pipe';
 
 const modules = [
   BrowserModule,
@@ -49,6 +51,8 @@ const modules = [
   MatFormFieldModule,
   CoolSocialLoginButtonsModule,
   ReactiveFormsModule,
+  MatDatepickerModule,
+  MatMomentDateModule,
 ];
 
 const declarations = [
@@ -63,7 +67,23 @@ const declarations = [
   DashboardComponent,
   ForgotPasswordComponent,
   VerifyEmailComponent,
+  MomentPipe,
 ];
+
+// const dateFormat = {
+//   provide: MAT_DATE_FORMATS,
+//   useValue: {
+//     parse: {
+//       dateInput: ['l', 'LL'],
+//     },
+//     display: {
+//       dateInput: 'L',
+//       monthYearLabel: 'MMM YYYY',
+//       dateA11yLabel: 'LL',
+//       monthYearA11yLabel: 'MMMM YYYY',
+//     },
+//   },
+// };
 
 @NgModule({
   declarations: [...declarations],

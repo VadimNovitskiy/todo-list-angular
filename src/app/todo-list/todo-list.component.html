@@ -1,15 +1,24 @@
 <div class="container">
+    <app-menu></app-menu>
     
     <div class="heder">
-        <div class="title">Your Todo</div>
-        <mat-button-toggle-group #group="matButtonToggleGroup" aria-label='none' [value]=filter>
+        <div class="title">Your Todo </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label></mat-label>
+            <input matInput [matDatepicker]="picker" [formControl]="date" (dateInput)="onDateChange()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker color="accent" #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-button-toggle-group #group="matButtonToggleGroup" aria-label='none' value="all">
             <mat-button-toggle value="all" (click)="renderItem(group.value)">All</mat-button-toggle>
             <mat-button-toggle value="active" (click)="renderItem(group.value)">Active</mat-button-toggle>
             <mat-button-toggle value="done" (click)="renderItem(group.value)">Done</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
     
-    <ul class="list">
+    <ul class="list" *ngIf="authService.userData as user">
         <li class="todo" *ngFor="let item of items">
             <app-todo [item]="item" (remove)="removeItem($event)">
             </app-todo>

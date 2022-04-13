@@ -7,8 +7,6 @@ import { ForgotPasswordComponent } from './authentication/forgot-password/forgot
 import { VerifyEmailComponent } from './authentication/verify-email/verify-email.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 
-// import { AuthGuard } from './shared/guard/auth.guard';
-
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
@@ -16,9 +14,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
-  // { path: 'todo', component: TodoListComponent },
-  // { path: ':{filterType}', component: TodoListComponent },
-  // { path: '**', redirectTo: '/' },
+  { path: 'todo', component: TodoListComponent },
+  // { path: '**', redirectTo: '/sign-in' },
 ];
 
 @NgModule({

@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   userData: any;
+  userId = '';
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
@@ -29,6 +30,11 @@ export class AuthService {
         JSON.parse(localStorage.getItem('user')!);
       }
     });
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userId = user.uid;
+      }
+    });
   }
 
   SingIn(email: string, password: string) {
@@ -36,12 +42,12 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['todo']);
         });
         this.SetUserData(result.user);
       })
       .catch((err) => {
-        window.alert(err);
+        console.error(err);
       });
   }
 
@@ -53,13 +59,13 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((err) => {
-        window.alert(err.message);
+        console.error(err);
       });
   }
 
   SendVerificationMail() {
     return this.afAuth.currentUser
-      .then((u: any) => u.sendEmailVerification())
+      .then((user: any) => user.sendEmailVerification())
       .then(() => {
         this.router.navigate(['verify-email-address']);
       });
@@ -69,10 +75,10 @@ export class AuthService {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        alert('Password reset email sent, check your inbox.');
       })
       .catch((err) => {
-        window.alert(err);
+        console.error(err);
       });
   }
 
@@ -84,7 +90,7 @@ export class AuthService {
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['todo']);
       }
     });
   }
@@ -94,12 +100,12 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['todo']);
         });
         this.SetUserData(result.user);
       })
       .catch((err) => {
-        window.alert(err);
+        console.error(err);
       });
   }
 
@@ -111,7 +117,6 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoUrl: user.photoUrl,
       emailVerified: user.emailVerified,
     };
     return userRef.set(userData, {
@@ -122,7 +127,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sing-in']);
+      this.router.navigate(['']);
     });
   }
 }
