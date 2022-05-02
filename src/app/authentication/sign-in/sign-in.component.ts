@@ -12,7 +12,7 @@ export class SignInComponent {
 
   constructor(public authService: AuthService) {}
 
-  getErrorMessage() {
+  getErrorMassage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }

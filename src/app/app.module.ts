@@ -19,6 +19,12 @@ import { AutoFocusDirectiveDirective } from './shared/auto-focus.directive.direc
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
+import { NgxsModule } from '@ngxs/store';
+import { TodoState } from './store/app.state';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
+
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
@@ -53,6 +59,19 @@ const modules = [
   ReactiveFormsModule,
   MatDatepickerModule,
   MatMomentDateModule,
+  NgxsModule.forRoot([TodoState], {
+    developmentMode: !environment.production,
+  }),
+  NgxsReduxDevtoolsPluginModule.forRoot(),
+  NgxsLoggerPluginModule.forRoot(),
+  NgxLoadingModule.forRoot({
+    animationType: ngxLoadingAnimationTypes.wanderingCubes,
+    backdropBackgroundColour: 'rgba(0,0,0,0.1)',
+    backdropBorderRadius: '4px',
+    primaryColour: '#ffffff',
+    secondaryColour: '#ffffff',
+    tertiaryColour: '#ffffff',
+  }),
 ];
 
 const declarations = [
@@ -69,21 +88,6 @@ const declarations = [
   VerifyEmailComponent,
   MomentPipe,
 ];
-
-// const dateFormat = {
-//   provide: MAT_DATE_FORMATS,
-//   useValue: {
-//     parse: {
-//       dateInput: ['l', 'LL'],
-//     },
-//     display: {
-//       dateInput: 'L',
-//       monthYearLabel: 'MMM YYYY',
-//       dateA11yLabel: 'LL',
-//       monthYearA11yLabel: 'MMMM YYYY',
-//     },
-//   },
-// };
 
 @NgModule({
   declarations: [...declarations],

@@ -25,8 +25,8 @@ export class DataService {
     this.itemsRef = this.db.list(this.dbPath);
   }
 
-  getItems(id: string, date: moment.Moment): Observable<Item[]> {
-    this.dbInfo(id, date);
+  getItems(userId: string, date: moment.Moment): Observable<Item[]> {
+    this.dbInfo(userId, date);
     return this.itemsRef.snapshotChanges().pipe(
       map((changes) =>
         changes.map((c) => ({

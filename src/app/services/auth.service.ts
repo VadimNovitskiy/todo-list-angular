@@ -7,12 +7,14 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import firebase from 'firebase/compat';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userData: any;
+  userData!: firebase.User;
   userId = '';
   constructor(
     public afs: AngularFirestore,
@@ -44,7 +46,9 @@ export class AuthService {
         this.ngZone.run(() => {
           this.router.navigate(['todo']);
         });
-        this.SetUserData(result.user);
+        if (result.user) {
+          this.SetUserData(result.user);
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -65,7 +69,11 @@ export class AuthService {
 
   SendVerificationMail() {
     return this.afAuth.currentUser
-      .then((user: any) => user.sendEmailVerification())
+      .then((user: firebase.User | null) => {
+        if (user) {
+          user.sendEmailVerification();
+        }
+      })
       .then(() => {
         this.router.navigate(['verify-email-address']);
       });
@@ -95,7 +103,7 @@ export class AuthService {
     });
   }
 
-  AuthLogin(provider: any) {
+  AuthLogin(provider: GoogleAuthProvider) {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {

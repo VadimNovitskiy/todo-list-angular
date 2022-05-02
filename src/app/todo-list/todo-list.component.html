@@ -19,8 +19,8 @@
     </div>
     
     <ul class="list" *ngIf="authService.userData as user">
-        <li class="todo" *ngFor="let item of items">
-            <app-todo [item]="item" (remove)="removeItem($event)">
+        <li class="todo" *ngFor="let todo of todos | async">
+            <app-todo [item]="todo">
             </app-todo>
         </li>
     </ul>

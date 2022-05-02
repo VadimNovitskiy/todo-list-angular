@@ -1,7 +1,9 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { Store } from '@ngxs/store';
 import { Item } from '../models/item.model';
 import { DataService } from '../services/data.service';
+import { DeleteTodo, UpdateTodo } from '../store/app.actions';
 
 @Component({
   selector: 'app-todo',
@@ -14,9 +16,7 @@ export class TodoComponent {
 
   @Input() item!: Item;
 
-  @Output() remove = new EventEmitter();
-
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private store: Store) {}
 
   onEdit() {
     this.editable = !this.editable;
@@ -28,10 +28,11 @@ export class TodoComponent {
       done: event.checked,
     };
     if (this.item.id && this.item.done != event.checked) {
-      this.dataService
-        .update(this.item.id, data)
-        .then(() => console.log('The item was done successfully!'))
-        .catch((err) => console.error(err));
+      this.store.dispatch(new UpdateTodo(this.item.id, data));
+      // this.dataService
+      //   .update(this.item.id, data)
+      //   .then(() => console.log('The item was done successfully!'))
+      //   .catch((err) => console.error(err));
     }
   }
 
@@ -41,15 +42,19 @@ export class TodoComponent {
       done: this.item.done,
     };
     if (this.item.id) {
-      this.dataService
-        .update(this.item.id, data)
-        .then(() => console.log('The item was updated successfully!'))
-        .catch((err) => console.error(err));
+      this.store.dispatch(new UpdateTodo(this.item.id, data));
+      // this.dataService
+      //   .update(this.item.id, data)
+      //   .then(() => console.log('The item was updated successfully!'))
+      //   .catch((err) => console.error(err));
     }
     this.editable = !this.editable;
   }
 
   onRemove() {
-    this.remove.emit(this.item.id);
+    if (this.item.id) {
+      this.store.dispatch(new DeleteTodo(this.item.id));
+    }
+    // this.remove.emit(this.item.id);
   }
 }
